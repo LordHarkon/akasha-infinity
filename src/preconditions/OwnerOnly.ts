@@ -1,0 +1,17 @@
+import { Precondition, PreconditionResult } from "@sapphire/framework";
+import type { Message } from "discord.js";
+import { envParseArray } from "../lib/env-parser";
+
+const OWNERS = envParseArray("OWNERS");
+
+export class OwnerOnly extends Precondition {
+    public run(message: Message): PreconditionResult {
+        return OWNERS.includes(message.author.id) ? this.ok() : this.error({ message: "This command can only be used by the owner." });
+    }
+}
+
+declare module "@sapphire/framework" {
+    export interface Preconditions {
+        OwnerOnly: never;
+    }
+}

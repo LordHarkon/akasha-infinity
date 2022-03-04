@@ -1,0 +1,23 @@
+{
+	"extends": "@sapphire/ts-config",
+	"compilerOptions": {
+		"target": "ESNext",
+		"rootDir": "src",
+		"outDir": "dist",
+		"removeComments": true,
+		"strict": false,
+		"types": ["node"],
+		"skipLibCheck": true,
+		"noUnusedParameters": false,
+		"tsBuildInfoFile": "dist/.tsbuildinfo",
+		"baseUrl": "./",
+		"paths": {
+			"#lib/*": ["src/lib/*"],
+			"#structures/*": ["src/lib/structures/*"],
+			"#typings/*": ["src/typings/*"],
+			"#root/*": ["src/*"],
+			"#models/*": ["src/models/*"]
+		}
+	},
+	"include": ["src"]
+}
