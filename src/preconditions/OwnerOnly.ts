@@ -11,7 +11,7 @@ export class OwnerOnly extends Precondition {
 }
 
 declare module "@sapphire/framework" {
-    export interface Preconditions {
+    interface Preconditions {
         OwnerOnly: never;
     }
 }

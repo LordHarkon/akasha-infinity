@@ -16,10 +16,10 @@ export const RandomLoadingMessage = [
 ];
 
 export enum premiumTiers {
-    NONE = 0,
-    TIER_1 = 1,
-    TIER_2 = 2,
-    TIER_3 = 3,
+    NONE = "0",
+    TIER_1 = "1",
+    TIER_2 = "2",
+    TIER_3 = "3",
 }
 
 export enum verificationLevels {
@@ -30,7 +30,7 @@ export enum verificationLevels {
     VERY_HIGH = "Very High",
 }
 
-export enum explicitContentFilterLevels {
+export enum explicitContentFilters {
     DISABLED = "Disabled",
     MEMBERS_WITHOUT_ROLES = "Members without Roles",
     ALL_MEMBERS = "All Members",

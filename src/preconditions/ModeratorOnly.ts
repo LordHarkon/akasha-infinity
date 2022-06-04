@@ -4,7 +4,7 @@ import type { Message } from "discord.js";
 export class ModeratorOnly extends Precondition {
     public run(message: Message): PreconditionResult {
         if (
-            (message.guild && message.member!.permissions.has("MANAGE_MESSAGES")) ||
+            (message.guild && message.member!.permissions.has("MODERATE_MEMBERS")) ||
             (message.guild && message.member!.permissions.has("BAN_MEMBERS")) ||
             (message.guild && message.member!.permissions.has("KICK_MEMBERS"))
         )
@@ -14,7 +14,7 @@ export class ModeratorOnly extends Precondition {
 }
 
 declare module "@sapphire/framework" {
-    export interface Preconditions {
+    interface Preconditions {
         ModeratorOnly: never;
     }
 }

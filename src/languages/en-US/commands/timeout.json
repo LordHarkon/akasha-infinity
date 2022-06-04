@@ -1,0 +1,8 @@
+{
+    "description": "Timeout a user for a given period of time.",
+    "detailedDescription": "This command can be used to timeout a user longer than the discord GUI allows. Using the command without the time parameter will remove the timeout.",
+    "successTimeout": "User has been timed out for {{time}}.",
+    "successRemove": "User's timeout has been removed.",
+    "noTarget": "You must specify a user.",
+    "invalidTime": "Specified time is invalid."
+}

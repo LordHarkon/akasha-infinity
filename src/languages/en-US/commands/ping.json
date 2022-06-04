@@ -1,0 +1,6 @@
+{
+    "description": "Pong!",
+    "detailedDescription": "Shows the bot and API latency.",
+    "success_initial": "Ping?",
+    "success_final": "Pong!🏓\nBot Latency {{bot_latency}}ms\nAPI Latency {{api_latency}}ms"
+}

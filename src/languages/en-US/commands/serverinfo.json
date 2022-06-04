@@ -1,0 +1,20 @@
+{
+    "description": "Shows the server's information.",
+    "detailedDescription": "Shows information about the server the command was used in. Example of information would be the number of members, channels, roles, etc.",
+    "loading": "Loading... <a:loading:959219402992144424>",
+    "success": "Successfully loaded server information.",
+    "owner": "Owner",
+    "memberCount": "Member Count",
+    "emojis": "Emojis",
+    "channels": "Channels",
+    "roles": "Roles",
+    "partnered": "Partnered",
+    "verificationLevel": "Verification Level",
+    "explicitContentFilter": "Explicit Content Filter",
+    "boostsTier": "Boosts Tier",
+    "boosts": "Boosts",
+    "nsfwLevel": "NSFW Level",
+    "2faRequired": "2FA Required",
+    "createdAt": "Created At",
+    "roles_section": "Roles{{possible_section}}"
+}

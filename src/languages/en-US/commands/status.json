@@ -1,0 +1,6 @@
+{
+    "description": "Show the user's experience card.",
+    "detailedDescription": "The user's experience card is a small card that shows the user's current level and experience.",
+    "generating": "Generating...",
+    "generated": "Generated, {{user}}!"
+}

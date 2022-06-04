@@ -1,0 +1,11 @@
+{
+    "description": "Kicks a user from the server.",
+    "noMember": "⛔ Member not found. Please try again with a valid member.",
+    "noSelf": "⛔ You cannot ban yourself.",
+    "noPermission": "⛔ You do not have permission to kick this member.",
+    "noReason": "⛔ Please provide a reason for this kick.",
+    "tooLong": "⛔ The reason cannot exceed 512 characters.",
+    "success": "✅ You have kicked {{member}} from the server.",
+    "successEmbed": "**Kicked User:** {{member}}\n**Reason:** {{reason}}",
+    "error": "⛔ An error occurred while kicking {{member}} from the server. Please try again."
+}

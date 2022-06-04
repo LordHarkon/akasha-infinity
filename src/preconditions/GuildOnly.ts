@@ -8,7 +8,7 @@ export class GuildOnly extends Precondition {
 }
 
 declare module "@sapphire/framework" {
-    export interface Preconditions {
+    interface Preconditions {
         GuildOnly: never;
     }
 }

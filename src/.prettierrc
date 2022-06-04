@@ -1,7 +1,7 @@
 {
-  "tabWidth": 4,
-  "useTabs": false,
-  "jsxBracketSameLine": true,
-  "printWidth": 140,
-  "trailingComma": "all"
+    "tabWidth": 4,
+    "useTabs": false,
+    "jsxBracketSameLine": true,
+    "printWidth": 150,
+    "trailingComma": "all"
 }

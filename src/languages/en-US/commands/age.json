@@ -1,0 +1,6 @@
+{
+    "description": "Shows the how long the user has been in the server.",
+    "detailedDescription": "Also shows the age of the user's account.",
+    "successOther": "{{member}} has been on the server since {{time}}.\nTheir account has been created {{age}}.",
+    "successSelf": "You have been on the server since {{time}}.\nYour account has been created {{age}}."
+}

@@ -1,0 +1,16 @@
+{
+    "description": "Shows a user's stats.",
+    "detailedDescription": "Shows information about the author or specified user like their money, games played, etc.",
+    "bank": "———————————BANK———————————",
+    "rps": "———————————RPS————————————",
+    "rpsls": "———————————RPSLS———————————",
+    "slots": "———————————SLOTS———————————",
+    "roulette": "——————————ROULETTE——————————",
+    "currentlyOwning": "Currently Owning",
+    "totalOwned": "Total Owned",
+    "played": "Played",
+    "won": "Won",
+    "lost": "Lost",
+    "moneyWon": "Money Won",
+    "moneyLost": "Money Lost"
+}

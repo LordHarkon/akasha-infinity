@@ -1,0 +1,5 @@
+{
+    "description": "Shows the level.",
+    "detailedDescription": "If a user is specified it shows their level, otherwise it shows the level of the user who ran the command.",
+    "levelInfo": "Level **{{level}}**\nExperience: **{{currentExperience}} / {{upperBound}}** (**{{percentage}} %**)\nTotal Experience: **{{totalExperience}}**"
+}

@@ -1,0 +1,12 @@
+{
+    "description": "Bans a user from the server.",
+    "noMember": "⛔ Member not found. Please try again with a valid member.",
+    "noSelf": "⛔ You cannot ban yourself.",
+    "noPermission": "Y⛔ ou do not have permission to ban this member.",
+    "noReason": "⛔ Please provide a reason for this ban.",
+    "tooLong": "⛔ The reason cannot exceed 512 characters.",
+    "incorrectTime": "⛔ The number of days of messages to delete, must be between 0 and 7, inclusive.",
+    "success": "✅ You have banned {{member}} from the server.",
+    "successEmbed": "**Banned User:** {{member}}\n**Reason:** {{reason}}\n**Messages Deleted**: {{days}} days",
+    "error": "⛔ An error occurred while banning {{member}} from the server. Please try again."
+}

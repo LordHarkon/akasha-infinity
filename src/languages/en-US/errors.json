@@ -1,0 +1,10 @@
+{
+    "guildOnly": "This command can only be used in a guild.",
+    "noPerms": "You do not have the required permissions to use this command.",
+    "dmOnly": "This command can only be used in a direct message.",
+    "nsfwOnly": "This command can only be used in a NSFW channel.",
+    "noDescription": "No description was provided.",
+    "noDetailedDescription": "No detailed description was provided.",
+    "invalidSize": "The size of the image specified is invalid. Valid sizes are: `16`, `32`, `56`, `64`, `96`, `128`, `256`, `300`, `512`, `600`, `1024`, `2048`, `4096`.",
+    "unknown": "Unknown error."
+}

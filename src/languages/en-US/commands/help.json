@@ -1,0 +1,19 @@
+{
+    "description": "Shows the help menu.",
+    "detailedDescription": "If no command is specified, the help menu for all commands will be shown.\nIf a command is specified, the help menu for that command will be shown.",
+    "unknownCommand": "This command does not exist.",
+    "helpMenu": "Help Menu",
+    "helpMenuCommand": "Help Menu | {{category}} | {{command}}",
+    "helpMenuCategory": "Help Menu | {{category}}",
+    "helpMenuFooter": "Use `help [command]` to get more information about a specific command.",
+    "requiredUserPermissions": "Required User Permissions",
+    "requiredBotPermissions": "Required Bot Permissions",
+    "cooldown": "Cooldown",
+    "nsfw": "NSFW",
+    "usage": "Usage",
+    "examples": "Examples",
+    "flags": "Flags",
+    "options": "Options",
+    "aliases": "Aliases",
+    "none": "None"
+}

@@ -1,21 +1,33 @@
 import { Schema, model, Document } from "mongoose";
 
-interface Command extends Document {
+export interface ICommand extends Document {
     command: string;
     uses: number;
+    guildId: string;
+    guildName: string;
 }
 
-const CommandSchema = new Schema<Command>({
+export type CommandDocument = ICommand & Document;
+
+const CommandSchema = new Schema<CommandDocument>({
     command: {
         type: String,
         required: true,
-        unique: true,
         index: true,
     },
     uses: {
         type: Number,
         default: 0,
     },
+    guildId: {
+        type: String,
+    },
+    guildName: {
+        type: String,
+    },
 });
 
-export default model<Command>("Command", CommandSchema);
+CommandSchema.index({ command: 1 }, { unique: true });
+CommandSchema.index({ command: 1, guildId: 1 }, { unique: true });
+
+export default model<CommandDocument>("Command", CommandSchema);

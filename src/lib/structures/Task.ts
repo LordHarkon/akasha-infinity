@@ -17,9 +17,9 @@ import type { TaskJSON, TaskOptions } from "#typings/index";
  *
  * // Define a class extending `Task`, then export it.
  * // You can use a interval in milliseconds
- * \@ApplyOptions<TaskOptions>({ interval: 10_000 })
+ * (at)ApplyOptions<TaskOptions>({ interval: 10_000 })
  * // or a cron
- * \@ApplyOptions<TaskOptions>({ cron: "* * * * *" })
+ * (at)ApplyOptions<TaskOptions>({ cron: "* * * * *" })
  * export default class MyTask extends Task {
  *     public run(): void {
  *         this.container.logger.info("Task ran!");

@@ -1,0 +1,8 @@
+{
+    "description": "Shows the avatar of the requested member.",
+    "detailedDescription": "If no member is specified, the avatar of the requester is shown.",
+    "requestedBy": "Requested by {{user}}",
+    "user": "{{user}}'s avatar",
+    "invalidFormat": "Please provide a valid format. Available formats: {{formats}}",
+    "invalidSize": "Please provide a valid size. Available sizes: {{sizes}}"
+}

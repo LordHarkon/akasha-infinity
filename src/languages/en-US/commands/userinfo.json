@@ -1,0 +1,5 @@
+{
+    "description": "Shows information about the user.",
+    "detailedDescription": "The information includes, but is not limited to: id, name, nickname, highest role.",
+    "success": "<:user_icon:981094177687363594> __**Account Information**__\n**ID »** {{id}}\n**Username »** {{username}}\n**Discriminator »** {{discriminator}}\n**Bot »** {{bot}}\n**Created »** {{created}}\n\n<:info_icon:981149693558005790> **__Member Information__**\n**Hoist Role »** {{hoistRole}}\n**Owner »** {{owner}}\n**Nickname »** {{nickname}}\n**Joined »** {{joined}}\n**Color »** {{color}}\n**Roles »** {{roles}}\n\n<:role_icon:981150666066124830> **__Roles__**\n{{_roles}}"
+}

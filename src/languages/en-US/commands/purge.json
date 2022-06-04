@@ -1,0 +1,9 @@
+{
+    "description": "Deletes messages from a channel.",
+    "detailedDescription": "Deletes a specified amount of messages from a channel ranging from 1 to 500, as long as they are no older than 2 weeks.",
+    "noMessages": "⛔ You must specify a number of messages to delete.",
+    "tooManyMessages": "⛔ You cannot delete more than 500 messages at a time.",
+    "success": "✅ Successfully deleted {{messages}} messages.",
+    "error": "⛔ Failed to delete messages. Error: {{error}}",
+    "14dayLimit": "You can only bulk delete messages that are under 14 days old."
+}

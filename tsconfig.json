@@ -6,7 +6,6 @@
 		"outDir": "dist",
 		"removeComments": true,
 		"strict": false,
-		"types": ["node"],
 		"skipLibCheck": true,
 		"noUnusedParameters": false,
 		"tsBuildInfoFile": "dist/.tsbuildinfo",
@@ -15,8 +14,9 @@
 			"#lib/*": ["src/lib/*"],
 			"#structures/*": ["src/lib/structures/*"],
 			"#typings/*": ["src/typings/*"],
-			"#root/*": ["src/*"],
-			"#models/*": ["src/models/*"]
+			"#models/*": ["src/models/*"],
+			"#database/*": ["src/lib/database/*"],
+			"#assets/*": ["src/assets/*"]
 		}
 	},
 	"include": ["src"]
