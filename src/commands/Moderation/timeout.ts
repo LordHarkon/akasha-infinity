@@ -10,10 +10,15 @@ import ms from "ms";
     name: "timeout",
     examples: ["timeout TestUser", "timeout TestUser 1h", "timeout TestUser 1h 10m", "timeout TestUser 1h 10m 10s"],
     usage: "<user> [duration<0, 27d 23h 59m>]",
-    preconditions: ["GuildOnly"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        "GuildOnly",
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["MODERATE_MEMBERS"],
     requiredUserPermissions: ["MODERATE_MEMBERS"],
 })

@@ -10,9 +10,14 @@ import { nameThatColor } from "#lib/utils";
 @ApplyOptions<CommandOptions>({
     name: "userinfo",
     examples: ["userinfo"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["EMBED_LINKS"],
 })
 export class UserInfoCommand extends Command {

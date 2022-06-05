@@ -1,4 +1,4 @@
-import { Document, model, Schema } from "mongoose";
+import mongoose from "mongoose";
 
 export type UserAccessLevels = 1 | 2 | 3;
 
@@ -12,9 +12,9 @@ export interface IUser {
     premiumExpires?: Date;
 }
 
-export type UserDocument = IUser & Document;
+export type UserDocument = IUser & mongoose.Document;
 
-const UserSchema = new Schema<UserDocument>({
+const UserSchema = new mongoose.Schema<UserDocument>({
     id: {
         type: String,
         required: true,
@@ -48,4 +48,4 @@ const UserSchema = new Schema<UserDocument>({
     },
 });
 
-export default model<UserDocument>("User", UserSchema);
+export default mongoose.model<UserDocument>("User", UserSchema);

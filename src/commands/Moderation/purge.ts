@@ -9,10 +9,15 @@ import { resolveKey, sendLocalized } from "@sapphire/plugin-i18next";
     name: "purge",
     examples: ["purge 22", "purge 1 @TestUser", "purge 500 TestUser"],
     usage: "<messages<1,500>> [user]",
-    preconditions: ["GuildOnly"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        "GuildOnly",
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["MANAGE_MESSAGES"],
     requiredUserPermissions: ["MANAGE_MESSAGES"],
 })

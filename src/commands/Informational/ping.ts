@@ -7,9 +7,14 @@ import { editLocalized, sendLocalized } from "@sapphire/plugin-i18next";
 @ApplyOptions<CommandOptions>({
     name: "ping",
     examples: ["ping"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["SEND_MESSAGES"],
 })
 export class PingCommand extends Command {

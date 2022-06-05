@@ -15,10 +15,15 @@ import type { Image } from "skia-canvas/lib";
 @ApplyOptions<CommandOptions>({
     examples: ["status", "status user", "status @user#0001"],
     usage: "[member]",
-    cooldown: {
-        delay: 10000,
-        premiumDelay: 4000,
-    },
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 10000,
+                premiumDelay: 4000,
+            },
+        },
+    ],
     requiredClientPermissions: ["ATTACH_FILES"],
 })
 export class StatusCommand extends Command {

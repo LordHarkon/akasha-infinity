@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import mongoose from "mongoose";
 
 export interface ILogOptions {
     logMessageUpdates?: boolean;
@@ -38,9 +38,9 @@ export interface IReward {
     disabled: boolean;
 }
 
-export type SettingsDocument = ISettings & Document;
+export type SettingsDocument = ISettings & mongoose.Document;
 
-const SettingsSchema = new Schema<SettingsDocument>({
+const SettingsSchema = new mongoose.Schema<SettingsDocument>({
     guildId: {
         type: String,
         required: true,
@@ -151,4 +151,4 @@ const SettingsSchema = new Schema<SettingsDocument>({
     ],
 });
 
-export default model<SettingsDocument>("Settings", SettingsSchema);
+export default mongoose.model<SettingsDocument>("Settings", SettingsSchema);

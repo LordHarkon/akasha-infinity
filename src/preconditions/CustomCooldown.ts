@@ -33,7 +33,7 @@ export class CustomCooldown extends Precondition {
 
             return this.error({
                 identifier: Identifiers.PreconditionCooldown,
-                message: `<@${message.author.id}>, command is on cooldown for another \`${convertTime(remaining)}\`.`,
+                message: `command is on cooldown for another \`${convertTime(remaining)}\`.`,
                 context: { remaining },
             });
         }

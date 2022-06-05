@@ -15,9 +15,14 @@ import Settings from "#models/Settings";
     aliases: ["commands", "cmds", "cmd"],
     examples: ["help", "help ping"],
     usage: "[command]",
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["EMBED_LINKS"],
 })
 export class HelpCommand extends Command {

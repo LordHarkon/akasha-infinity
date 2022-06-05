@@ -14,7 +14,14 @@ import { imageFormats, isValidImageFormat, isValidImageSize, imageSizes } from "
     examples: ["avatar", "avatar @user#0001", "avatar user", "avatar user --size=4096 --format=png"],
     usage: "[member] [--size=<number>] [--format=<format>]",
     options: ["size", "format"],
-    preconditions: ["NotBlacklisted"],
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     // cooldown: {
     //     delay: 1000,
     // },

@@ -6,7 +6,7 @@ export abstract class SubCommand extends SubCommandPluginCommand {
     public usage?: string;
     public examples?: string[];
 
-    public constructor(context: PieceContext, options: SubCommandOptions) {
+    protected constructor(context: PieceContext, options: SubCommandOptions) {
         super(context, options);
 
         this.examples = options.examples || [];

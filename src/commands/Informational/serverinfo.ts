@@ -10,9 +10,14 @@ import { format, formatDistance } from "date-fns";
 @ApplyOptions<CommandOptions>({
     aliases: ["guildinfo"],
     examples: ["serverinfo"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["EMBED_LINKS"],
 })
 export class ServerInfoCommand extends Command {

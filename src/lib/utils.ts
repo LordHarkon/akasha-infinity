@@ -3,7 +3,7 @@ import { ColorResolvable, Message, MessageEmbed, User } from "discord.js";
 import { Canvas, Image, resolveImage } from "canvas-constructor/skia";
 import { RandomLoadingMessage } from "./constants";
 import path from "path";
-import * as colors from "../assets/data/colors.json";
+import * as colors from "#assets/data/colors.json";
 
 /**
  * Picks a random item from an array

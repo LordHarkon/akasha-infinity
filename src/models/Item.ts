@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import mongoose from "mongoose";
 
 export interface ItemInterface {
     id: string;
@@ -12,9 +12,9 @@ export interface ItemInterface {
     disabled?: boolean;
 }
 
-export type ItemDocument = ItemInterface & Document;
+export type ItemDocument = ItemInterface & mongoose.Document;
 
-const ItemSchema = new Schema<ItemDocument>({
+const ItemSchema = new mongoose.Schema<ItemDocument>({
     id: {
         type: String,
         required: true,
@@ -52,4 +52,4 @@ const ItemSchema = new Schema<ItemDocument>({
     },
 });
 
-export default model<ItemDocument>("Item", ItemSchema);
+export default mongoose.model<ItemDocument>("Item", ItemSchema);

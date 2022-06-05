@@ -11,10 +11,15 @@ import { Embed } from "#lib/structures/Embed";
     name: "kick",
     examples: ["kick @user", "kick user#0001", "kick user"],
     usage: "<user> [reason<512>]",
-    preconditions: ["GuildOnly"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        "GuildOnly",
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["KICK_MEMBERS", "EMBED_LINKS"],
     requiredUserPermissions: ["KICK_MEMBERS"],
 })

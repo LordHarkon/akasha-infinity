@@ -11,11 +11,12 @@
 		"tsBuildInfoFile": "dist/.tsbuildinfo",
 		"baseUrl": "./",
 		"paths": {
-			"#lib/*": ["src/lib/*"],
+			"#config": ["src/config.ts"],
+			"#database/*": ["src/lib/database/*"],
 			"#structures/*": ["src/lib/structures/*"],
+			"#lib/*": ["src/lib/*"],
 			"#typings/*": ["src/typings/*"],
 			"#models/*": ["src/models/*"],
-			"#database/*": ["src/lib/database/*"],
 			"#assets/*": ["src/assets/*"]
 		}
 	},

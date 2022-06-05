@@ -1,20 +1,24 @@
 {
 	"name": "infinity",
 	"version": "1.0.0",
-	"main": "src/index.ts",
+	"main": "dist/index.js",
 	"author": "Hooshu",
 	"license": "MIT",
 	"scripts": {
-		"start:linux": "NODE_ENV=production ts-node src/index.ts",
-		"start:windows": "set NODE_ENV=production&& ts-node src/index.ts",
-		"dev": "nodemon src/index.ts"
+		"build": "tsup",
+		"watch": "tsup --watch",
+		"dev": "tsup --watch --onSuccess \"yarn start\"",
+		"start": "node --enable-source-maps dist/index.js",
+		"start:linux": "NODE_ENV=production node dist/index.js",
+		"start:windows": "set NODE_ENV=production&& node dist/index.js"
 	},
 	"imports": {
-		"#lib/*": "./src/lib/*.ts",
-		"#structures/*": "./src/lib/structures/*.ts",
-		"#typings/*": "./src/typings/*.ts",
-		"#models/*": "./src/models/*.ts",
-		"#database/*": "./src/lib/database/*.ts",
+		"#config": "./dist/config.js",
+		"#database/*": "./dist/lib/database/*.js",
+		"#structures/*": "./dist/lib/structures/*.js",
+		"#lib/*": "./dist/lib/*.js",
+		"#typings/*": "./dist/typings/*.js",
+		"#models/*": "./dist/models/*.js",
 		"#assets/*": "./src/assets/*"
 	},
 	"dependencies": {
@@ -55,6 +59,9 @@
 		"@types/node-cron": "^3.0.1",
 		"@types/validator": "^13.7.2",
 		"@types/ws": "^8.5.3",
+		"nodemon": "^2.0.16",
+		"ts-node": "^10.8.1",
+		"tsup": "^6.0.1",
 		"typescript": "^4.6.4"
 	},
 	"prettier": "@sapphire/prettier-config"

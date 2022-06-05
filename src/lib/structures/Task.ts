@@ -6,10 +6,9 @@ import type { TaskJSON, TaskOptions } from "#typings/index";
 
 /**
  * The base task class. This class is abstract and is to be extended by subsclasses, which should implement the methods.
- * In our worlkflow, tasks are ran at the specified interval.
+ * In our worlkflow, tasks are run at the specified interval.
  *
  * @example
- *
  * // Typscript
  * import { Task } from "#structures/Task";
  * import { ApplyOptions } from "@sapphire/decorators";
@@ -37,7 +36,7 @@ export default abstract class Task extends Piece {
     private _scheduleCron: cron.ScheduledTask;
     private readonly _callback: (() => Promise<void>) | null;
 
-    constructor(context: PieceContext, options: TaskOptions) {
+    protected constructor(context: PieceContext, options: TaskOptions) {
         super(context, options);
 
         this.interval = options.interval;

@@ -6,9 +6,15 @@ import type { Message } from "discord.js";
 @ApplyOptions<CommandOptions>({
     name: "warn",
     examples: ["warn"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        "GuildOnly",
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: [],
     requiredUserPermissions: ["MODERATE_MEMBERS"],
 })

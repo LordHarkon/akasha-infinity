@@ -1,4 +1,4 @@
-import { Schema, model, Types, Document, PopulatedDoc } from "mongoose";
+import mongoose from "mongoose";
 import type { UserDocument } from "./User";
 
 export type AvailableGamesType = "roulette" | "slots" | "rps" | "rpsls";
@@ -34,7 +34,7 @@ export interface IGuildUserBank {
 export interface IGuildUserInventory {
     items?: [
         {
-            item: Types.ObjectId;
+            item: mongoose.Types.ObjectId;
             amount: number;
         },
     ];
@@ -59,7 +59,7 @@ export interface IGuildUserModeration {
 }
 
 export interface IGuildUser {
-    user: PopulatedDoc<UserDocument>;
+    user: mongoose.PopulatedDoc<UserDocument>;
     guildId: string;
     experience?: number;
     joined?: boolean;
@@ -71,11 +71,11 @@ export interface IGuildUser {
     moderation?: IGuildUserModeration;
 }
 
-export type GuildUserDocument = IGuildUser & Document;
+export type GuildUserDocument = IGuildUser & mongoose.Document;
 
-const GuildUserSchema = new Schema<GuildUserDocument>({
+const GuildUserSchema = new mongoose.Schema<GuildUserDocument>({
     user: {
-        type: Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
@@ -189,7 +189,7 @@ const GuildUserSchema = new Schema<GuildUserDocument>({
         items: [
             {
                 item: {
-                    type: Types.ObjectId,
+                    type: mongoose.Types.ObjectId,
                     ref: "Item",
                 },
                 amount: {
@@ -246,4 +246,4 @@ const GuildUserSchema = new Schema<GuildUserDocument>({
 
 GuildUserSchema.index({ user: 1, guildId: 1 }, { unique: true });
 
-export default model<GuildUserDocument>("GuildUser", GuildUserSchema);
+export default mongoose.model<GuildUserDocument>("GuildUser", GuildUserSchema);

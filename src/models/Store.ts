@@ -1,17 +1,17 @@
-import { Schema, model, Document } from "mongoose";
+import mongoose from "mongoose";
 
 export interface IStore {
-    item: Schema.Types.ObjectId;
+    item: mongoose.Types.ObjectId;
     availableQuantity?: number;
     price: number;
     disabled?: boolean;
 }
 
-export type StoreDocument = IStore & Document;
+export type StoreDocument = IStore & mongoose.Document;
 
-const StoreSchema = new Schema<StoreDocument>({
+const StoreSchema = new mongoose.Schema<StoreDocument>({
     item: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Item",
         required: true,
         unique: true,
@@ -30,4 +30,4 @@ const StoreSchema = new Schema<StoreDocument>({
     },
 });
 
-export default model<StoreDocument>("Store", StoreSchema);
+export default mongoose.model<StoreDocument>("Store", StoreSchema);

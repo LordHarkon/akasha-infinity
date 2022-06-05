@@ -12,10 +12,15 @@ import { send } from "@sapphire/plugin-editable-commands";
 @ApplyOptions<CommandOptions>({
     examples: ["level", "level user", "level @user#0001"],
     usage: "[member]",
-    cooldown: {
-        delay: 3000,
-        premiumDelay: 1000,
-    },
+    preconditions: [
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 3000,
+                premiumDelay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["EMBED_LINKS"],
 })
 export class LevelCommand extends Command {

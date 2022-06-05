@@ -11,10 +11,15 @@ import { Embed } from "#lib/structures/Embed";
     name: "ban",
     examples: ["ban @TestUser 2 reason here", "ban TestUser#0001 reason here", "ban TestUser reason here"],
     usage: "<user> <reason<512>>",
-    preconditions: ["GuildOnly"],
-    cooldown: {
-        delay: 1000,
-    },
+    preconditions: [
+        "GuildOnly",
+        {
+            name: "CustomCooldown",
+            context: {
+                delay: 1000,
+            },
+        },
+    ],
     requiredClientPermissions: ["BAN_MEMBERS", "EMBED_LINKS"],
     requiredUserPermissions: ["BAN_MEMBERS"],
 })
