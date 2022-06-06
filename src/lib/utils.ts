@@ -86,6 +86,18 @@ export function wrap(value: string, wrapper: string): string {
     return wrapper + value + wrapper;
 }
 
+export function bold(value: string): string {
+    return `**${value}**`;
+}
+
+export function italic(value: string): string {
+    return `*${value}*`;
+}
+
+export function underline(value: string): string {
+    return `__${value}__`;
+}
+
 /**
  * Converts milliseconds to a human readable string
  * @param {number} ms - The number of milliseconds to convert to a human readable string.

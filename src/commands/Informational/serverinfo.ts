@@ -3,9 +3,11 @@ import { Embed } from "#lib/structures/Embed";
 import { ApplyOptions, RequiresGuildContext } from "@sapphire/decorators";
 import { explicitContentFilters, nsfwLevels, premiumTiers, verificationLevels } from "#lib/constants";
 import type { CommandOptions } from "#typings/index";
-import type { AllowedImageSize, GuildMember, Message, MessageEmbed, Role } from "discord.js";
+import type { AllowedImageSize, Message, MessageEmbed, Role } from "discord.js";
 import { resolveKey, sendLocalized } from "@sapphire/plugin-i18next";
 import { format, formatDistance } from "date-fns";
+import { stripIndent } from "common-tags";
+import { bold, underline } from "#lib/utils";
 
 @ApplyOptions<CommandOptions>({
     aliases: ["guildinfo"],
@@ -44,36 +46,35 @@ export class ServerInfoCommand extends Command {
             }),
         );
 
+        async function tc(key: string, endAddition?: string): Promise<string> {
+            return (await resolveKey(message, `commands/serverinfo:${key}`)) + endAddition;
+        }
+
         const embed: MessageEmbed = new Embed()
             .setTitle(guild.name)
             .setThumbnail(guild.iconURL({ dynamic: true, size: 4096 as AllowedImageSize }))
-            .addField(
-                await resolveKey(message, "commands/serverinfo:owner"),
-                await guild.fetchOwner().then((member: GuildMember) => member.toString()),
-                true,
-            )
-            .addField(await resolveKey(message, "commands/serverinfo:memberCount"), guild.memberCount.toString(), true)
-            .addField(await resolveKey(message, "commands/serverinfo:emojis"), guild.emojis.cache.size.toString(), true)
-            .addField(await resolveKey(message, "commands/serverinfo:channels"), guild.channels.cache.size.toString(), true)
-            .addField(await resolveKey(message, "commands/serverinfo:roles"), guild.roles.cache.size.toString(), true)
-            .addField(await resolveKey(message, "commands/serverinfo:partnered"), guild.partnered ? "Yes" : "No", true)
-            .addField(await resolveKey(message, "commands/serverinfo:verificationLevel"), verificationLevels[guild.verificationLevel], true)
-            .addField(
-                await resolveKey(message, "commands/serverinfo:explicitContentFilter"),
-                explicitContentFilters[guild.explicitContentFilter],
-                true,
-            )
-            .addField(await resolveKey(message, "commands/serverinfo:boostsTier"), premiumTiers[guild.premiumTier], true)
-            .addField(await resolveKey(message, "commands/serverinfo:boosts"), guild.premiumSubscriptionCount.toString(), true)
-            .addField(await resolveKey(message, "commands/serverinfo:nsfwLevel"), nsfwLevels[guild.nsfwLevel.toString()], true)
-            .addField(await resolveKey(message, "commands/serverinfo:2faRequired"), guild.mfaLevel === "NONE" ? "No" : "Yes", true)
-            .addField(
-                await resolveKey(message, "commands/serverinfo:createdAt"),
-                format(guild.createdAt, "dd MMMM yyyy HH:mm") + "\n(" + formatDistance(guild.createdAt, new Date(), { addSuffix: true }) + ")",
-                // formatDistance(guild.createdAt, new Date(), { addSuffix: true }),
-                true,
-            )
-            .setFooter({ text: guild.id });
+            .setDescription(
+                stripIndent`${bold(underline("Information"))}
+                ${bold(await tc("id", " »"))} ${guild.id}
+                ${bold(await tc("owner", " »"))} ${await guild.fetchOwner().then((m) => m.toString())}
+                ${bold(await tc("partnered", " »"))} ${guild.partnered ? "Yes" : "No"}
+                ${bold(await tc("verificationLevel", " »"))} ${verificationLevels[guild.verificationLevel]}
+                ${bold(await tc("explicitContentFilter", " »"))} ${explicitContentFilters[guild.explicitContentFilter]}
+                ${bold(await tc("2faRequired", " »"))} ${guild.mfaLevel === "NONE" ? "No" : "Yes"}
+                ${bold(await tc("nsfwLevel", " »"))} ${nsfwLevels[guild.nsfwLevel.toString()]}
+                ${bold(await tc("createdAt", " »"))} ${
+                    format(guild.createdAt, "dd MMMM yyyy HH:mm") + " (" + formatDistance(guild.createdAt, new Date(), { addSuffix: true }) + ")"
+                }
+                
+                ${bold(underline("Statistics"))}
+                ${bold(await tc("memberCount", " »"))} ${guild.memberCount}
+                ${bold(await tc("emojis", " »"))} ${guild.emojis.cache.size}
+                ${bold(await tc("channels", " »"))} ${guild.channels.cache.size}
+                ${bold(await tc("roles", " »"))} ${guild.roles.cache.size}
+                ${bold(await tc("boostsTier", " »"))} ${premiumTiers[guild.premiumTier]}
+                ${bold(await tc("boosts", " »"))} ${guild.premiumSubscriptionCount}
+                `,
+            );
 
         await Promise.all(
             roles.map(
