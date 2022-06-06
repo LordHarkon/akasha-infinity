@@ -62,9 +62,9 @@ export class ServerInfoCommand extends Command {
                 ${bold(await tc("explicitContentFilter", " »"))} ${explicitContentFilters[guild.explicitContentFilter]}
                 ${bold(await tc("2faRequired", " »"))} ${guild.mfaLevel === "NONE" ? "No" : "Yes"}
                 ${bold(await tc("nsfwLevel", " »"))} ${nsfwLevels[guild.nsfwLevel.toString()]}
-                ${bold(await tc("createdAt", " »"))} ${
-                    format(guild.createdAt, "dd MMMM yyyy HH:mm") + " (" + formatDistance(guild.createdAt, new Date(), { addSuffix: true }) + ")"
-                }
+                ${bold(await tc("createdAt", " »"))} <t:${(guild.createdTimestamp / 1000).toFixed(0)}:d> (<t:${(
+                    guild.createdTimestamp / 1000
+                ).toFixed(0)}:R>)
                 
                 ${bold(underline("Statistics"))}
                 ${bold(await tc("memberCount", " »"))} ${guild.memberCount}
