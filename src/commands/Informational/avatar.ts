@@ -22,9 +22,6 @@ import { imageFormats, isValidImageFormat, isValidImageSize, imageSizes } from "
             },
         },
     ],
-    // cooldown: {
-    //     delay: 1000,
-    // },
     requiredClientPermissions: ["EMBED_LINKS"],
 })
 export default class AvatarCommand extends Command {

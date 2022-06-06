@@ -7,7 +7,14 @@ import "@sapphire/plugin-i18next/register";
 import "@sapphire/plugin-editable-commands/register";
 import "@kaname-png/plugin-statcord/register";
 
-import * as colorette from "colorette";
+import { container } from "@sapphire/framework";
+import { Colorette, createColors } from "colorette";
 
 // Enable colorette
-colorette.createColors({ useColor: true });
+container.colors = createColors({ useColor: true });
+
+declare module "@sapphire/pieces" {
+    interface Container {
+        colors: Colorette;
+    }
+}
