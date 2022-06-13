@@ -3,6 +3,8 @@
     "detailedDescription": "Shows information about the server the command was used in. Example of information would be the number of members, channels, roles, etc.",
     "loading": "Loading... <a:loading:959219402992144424>",
     "success": "Successfully loaded server information.",
+    "information": "Information",
+    "statistics": "Statistics",
     "id": "ID",
     "owner": "Owner",
     "memberCount": "Member Count",
