@@ -5,7 +5,6 @@ import { explicitContentFilters, nsfwLevels, premiumTiers, verificationLevels } 
 import type { CommandOptions } from "#typings/index";
 import type { AllowedImageSize, Message, MessageEmbed, Role } from "discord.js";
 import { resolveKey, sendLocalized } from "@sapphire/plugin-i18next";
-import { format, formatDistance } from "date-fns";
 import { stripIndent } from "common-tags";
 import { bold, underline } from "#lib/utils";
 
@@ -54,7 +53,7 @@ export class ServerInfoCommand extends Command {
             .setTitle(guild.name)
             .setThumbnail(guild.iconURL({ dynamic: true, size: 4096 as AllowedImageSize }))
             .setDescription(
-                stripIndent`${bold(underline("Information"))}
+                stripIndent`${bold(underline(await tc("information")))}
                 ${bold(await tc("id", " »"))} ${guild.id}
                 ${bold(await tc("owner", " »"))} ${await guild.fetchOwner().then((m) => m.toString())}
                 ${bold(await tc("partnered", " »"))} ${guild.partnered ? "Yes" : "No"}
@@ -66,7 +65,7 @@ export class ServerInfoCommand extends Command {
                     guild.createdTimestamp / 1000
                 ).toFixed(0)}:R>)
                 
-                ${bold(underline("Statistics"))}
+                ${bold(underline(await tc("statistics")))}
                 ${bold(await tc("memberCount", " »"))} ${guild.memberCount}
                 ${bold(await tc("emojis", " »"))} ${guild.emojis.cache.size}
                 ${bold(await tc("channels", " »"))} ${guild.channels.cache.size}
