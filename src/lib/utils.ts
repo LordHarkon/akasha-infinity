@@ -98,6 +98,10 @@ export function underline(value: string): string {
     return `__${value}__`;
 }
 
+export function pluralize(count: number, singular: string, plural: string): string {
+    return count === 1 ? singular : plural;
+}
+
 /**
  * Converts milliseconds to a human readable string
  * @param {number} ms - The number of milliseconds to convert to a human readable string.
