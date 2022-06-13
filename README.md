@@ -1,4 +1,4 @@
-<img width="180" height="120" style="float: left; margin: 0 20px 0 0; padding: 0 20px;" alt="Infinity" src="infinity1.svg">
+<img align="left" width="180" height="120" style="float: left; margin: 0 20px 0 0; padding: 0 20px;" alt="Infinity" src="infinity1.svg">
 
 # Akasha Infinity - W.I.P
 
@@ -29,4 +29,4 @@ Something here about how to contribute.
 
 ## License
 
-- [**MIT**](https://github.com/LordHarkon/akasha-infinity/LICENSE)
+- [**MIT**](https://github.com/LordHarkon/akasha-infinity/blob/main/LICENSE)
