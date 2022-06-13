@@ -7,6 +7,8 @@
 ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/LordHarkon/akasha-infinity?color=cornflowerblue)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/LordHarkon/akasha-infinity)
 ![Discord](https://img.shields.io/discord/826921781511061544?color=blue)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/LordHarkon/akasha-infinity)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/LordHarkon/akasha-infinity)
 
 [//]: # (![GitHub branch checks state]&#40;https://img.shields.io/github/checks-status/LordHarkon/akasha-infinity/main?style=flat&#41;)
 ## About
