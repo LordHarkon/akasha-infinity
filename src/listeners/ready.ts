@@ -22,7 +22,7 @@ export class UserEvent extends Listener {
         });
 
         // TODO: Remove this in production
-        if (process.env.NODE_ENV !== "development")
+        if (process.env.NODE_ENV === "development")
             await Resolvers.resolveGuildTextChannel("478556102385074176", this.container.client.guilds?.cache.get("445572484469751808")).value.send(
                 `Gateway ready! - ${time}`,
             );
@@ -45,31 +45,32 @@ export class UserEvent extends Listener {
         /**
          * TODO: Change the 'Origin' part depending on the version.
          * *Origin is version 1.
+         * *Prima Rose is version 2. Maybe. Idfk. I am just thinking of cool names.
          */
         const versionString = `${colors.redBright("Version: ")}${colors.green(process.env.VER || "Unknown")} ${colors.red("-")} ${colors.blueBright(
             "Infinity Origin",
         )}`;
-        const botTag = `${colors.redBright("Logged in as: ")}${colors.cyanBright(client.user?.tag)} (${colors.green(client.user?.id)})`;
-        const guildCount = `${colors.redBright("Guild count: ")}${colors.cyanBright(client.guilds.cache.size.toLocaleString() || "0")}`;
-        const shardCount = `${colors.redBright("Shard count: ")}${colors.cyanBright(client.shard?.count?.toLocaleString() || "1")}`;
-        const memberCount = `${colors.redBright("Member count: ")}${colors.cyanBright(
+        const botTag = `${colors.redBright("Logged in as: ")}${colors.cyan(client.user?.tag)} (${colors.green(client.user?.id)})`;
+        const guildCount = `${colors.redBright("Guild count: ")}${colors.cyan(client.guilds.cache.size.toLocaleString() || "0")}`;
+        const shardCount = `${colors.redBright("Shard count: ")}${colors.cyan(client.shard?.count?.toLocaleString() || "1")}`;
+        const memberCount = `${colors.redBright("Member count: ")}${colors.cyan(
             client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0).toLocaleString(),
         )}`;
-        const botInvite = `${colors.redBright("Invite application: ")}${colors.cyanBright(
+        const botInvite = `${colors.redBright("Invite application: ")}${colors.cyan(
             client.generateInvite({
                 scopes: ["bot"],
                 // scopes: ['bot', 'applications.commands']
                 permissions: new Permissions([PermissionFlagsBits.Administrator]),
             }),
         )}`;
-        const defaultPrefix = `${colors.redBright("Default Prefix: ")}${colors.cyanBright(process.env.PREFIX || "inf.")}`;
+        const defaultPrefix = `${colors.redBright("Default Prefix: ")}${colors.cyan(process.env.PREFIX || "inf.")}`;
 
         const startMessages = [...logoAscii, "", versionString, "", botTag, guildCount, shardCount, memberCount, botInvite, defaultPrefix];
 
         for (const store of stores) startMessages.push(this.styleStore(store));
 
         for (const startMessage of startMessages) {
-            if (startMessage.includes("Invite application") && process.env.NODE_ENV === "development") continue;
+            // if (startMessage.includes("Invite application") && process.env.NODE_ENV === "development") continue;
             logger.info(startMessage);
         }
     }
@@ -77,6 +78,6 @@ export class UserEvent extends Listener {
     private styleStore(store: Store<any>) {
         const { colors } = this.container;
 
-        return `${colors.redBright(`${capitalize(store.name)}: `)}${colors.cyanBright(store.size.toLocaleString())} `;
+        return `${colors.redBright(`${capitalize(store.name)}: `)}${colors.cyan(store.size.toLocaleString())} `;
     }
 }
