@@ -14,15 +14,21 @@ export class Client extends SapphireClient {
         container.client = this;
     }
 
+    /**
+     * Retrieves the prefix for bot to respond to.
+     * @param message The message to determine the prefix for.
+     */
     public override fetchPrefix = async (message: Message): Promise<SapphirePrefix> => {
         if (isGuildBasedChannel(message.channel)) {
             const settings = new Settings(message.guild);
             await settings.init();
 
-            return [settings.prefix, process.env.PREFIX || "inf."] as Readonly<string[]>;
+            // Return guild custom prefix or default prefix if none is set
+            return settings.prefix ?? process.env.PREFIX ?? "inf.";
         }
 
-        return process.env.PREFIX || "inf.";
+        // Return default prefix if not in a guild and no prefix
+        return [process.env.PREFIX ?? "inf.", ""];
     };
 
     public override async login(token?: string) {
