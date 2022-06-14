@@ -1,44 +1,8 @@
 import "#lib/setup";
 import { Client } from "#lib/structures/Client";
-import { BOT_INTENTS, BOT_PARTIALS } from "#config";
-import type { InternationalizationContext } from "@sapphire/plugin-i18next";
-import Settings from "#models/Settings";
-import { join } from "path";
-import { srcDir } from "#lib/constants";
+import { CLIENT_OPTIONS } from "#config";
 
-const client = new Client({
-    intents: BOT_INTENTS,
-    partials: BOT_PARTIALS,
-    defaultPrefix: process.env.PREFIX || "inf.",
-    baseUserDirectory: __dirname,
-    caseInsensitiveCommands: true,
-    caseInsensitivePrefixes: true,
-    shards: "auto",
-    statcord: {
-        client_id: process.env.BOT_CLIENT_ID,
-        key: process.env.STATCORD_KEY,
-        autopost: true,
-        sharding: true,
-    },
-    i18n: {
-        fetchLanguage: async (context: InternationalizationContext) => {
-            if (!context.guild) return "en-US";
-
-            let guildSettings = await Settings.findOne({ guildId: context.guild.id });
-
-            if (!guildSettings) {
-                guildSettings = new Settings({
-                    guildId: context.guild.id,
-                    language: "en-US",
-                });
-                await guildSettings.save();
-            }
-
-            return guildSettings.language;
-        },
-        defaultLanguageDirectory: join(srcDir, "languages"),
-    },
-});
+const client = new Client(CLIENT_OPTIONS);
 /**
  * TODO: Add premium system, add redeemable codes, add a way to get a code, add a way to generate codes.
  * TODO: Add a command that gives the selected role when reacting to the message from the bot.
@@ -49,6 +13,8 @@ const client = new Client({
  * TODO: Add command to create multiple bank accounts for users. Each account will be tied to a user, or be anonymous.
  * !Upon the creation of the bank account, the user will receive a pin code to use for transferring money and stuff.
  * TODO: Add a trivia command with prizes maybe some fens or experience. The bot sends and embed with the questions and the answers. And the user reacts to the embed with the correct answer.
+ * TODO: Make commands toggleable by making a preconditions that check if they are in an array for that server. Useful for disabling commands inside the dashboard.
+ * TODO: Make the first page of the help command where it shows maybe some announcements/changelog and how to use the help command/bot.
  */
 
 (async () => {
