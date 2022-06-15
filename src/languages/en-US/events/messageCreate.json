@@ -1,0 +1,6 @@
+{
+  "moneyReward": "{{user}} received {{amount}} {{type}} for reaching level {{level}}.",
+  "itemReward": "{{user}} received item with the ID {{item}} for reaching level {{level}}.",
+  "roleReward": "{{user}} received the role <@&{{role}}> for reaching level {{level}}.",
+  "experienceGain": "{{user}} gained {{amount}} experience."
+}

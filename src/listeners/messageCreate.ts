@@ -5,10 +5,10 @@ import Settings from "#lib/database/Settings";
 import Experience from "#lib/database/Experience";
 import { randomRange } from "#lib/utils";
 import User from "#lib/database/User";
-import type { IReward } from "#models/Settings";
 import Currency from "#lib/database/Currency";
 import Inventory from "#lib/database/Inventory";
 import { Types } from "mongoose";
+import { resolveKey } from "@sapphire/plugin-i18next";
 
 const cooldown = new Set<string>();
 
@@ -62,7 +62,13 @@ export class MessageEvent extends Listener<typeof Events.MessageCreate> {
 
             await userExperience.add(newExperience);
 
-            if (experienceLogs) experienceLogs.send(`${message.author.tag} gained ${newExperience} experience.`);
+            if (experienceLogs)
+                experienceLogs.send(
+                    await resolveKey(message, "events/messageCreate:experienceGain", {
+                        user: message.author.tag,
+                        experience: newExperience,
+                    }),
+                );
         }
 
         await userData.raiseMessageCount();
@@ -72,30 +78,43 @@ export class MessageEvent extends Listener<typeof Events.MessageCreate> {
         if (eligibleRewards) {
             const remainingRewards = eligibleRewards.filter((reward) => !redeemedRewards.includes(reward.id));
             if (remainingRewards.length > 0) {
-                remainingRewards.forEach(async (reward: IReward) => {
+                for (const reward of remainingRewards) {
                     if (reward.rewardType === "money") {
                         await currency.add(parseInt(reward.reward));
                         await userData.addCollectedReward(reward.id);
                         if (experienceLogs)
                             experienceLogs.send(
-                                `${message.author.tag} received ${reward.reward} ${reward.rewardType} for reaching level ${reward.levelRequired}.`,
+                                await resolveKey(message, "events/messageCreate:moneyReward", {
+                                    user: message.author.tag,
+                                    amount: reward.reward,
+                                    type: reward.rewardType,
+                                    level: reward.levelRequired,
+                                }),
                             );
                     } else if (reward.rewardType === "item") {
                         await inventory.add(new Types.ObjectId(reward.reward), 1);
                         await userData.addCollectedReward(reward.id);
                         if (experienceLogs)
                             experienceLogs.send(
-                                `${message.author.tag} received item with the ID ${reward.reward} for reaching level ${reward.levelRequired}.`,
+                                await resolveKey(message, "events/messageCreate:itemReward", {
+                                    user: message.author.tag,
+                                    item: reward.reward,
+                                    level: reward.levelRequired,
+                                }),
                             );
                     } else if (reward.rewardType === "role") {
-                        message.guild.members.cache.get(message.author.id)?.roles.add(reward.reward);
+                        await message.guild.members.cache.get(message.author.id)?.roles.add(reward.reward);
                         await userData.addCollectedReward(reward.id);
                         if (experienceLogs)
                             experienceLogs.send(
-                                `${message.author.tag} received the role <@&${reward.reward}> for reaching level ${reward.levelRequired}.`,
+                                await resolveKey(message, "events/messageCreate:roleReward", {
+                                    user: message.author.tag,
+                                    role: reward.reward,
+                                    level: reward.levelRequired,
+                                }),
                             );
                     }
-                });
+                }
             }
         }
     }
