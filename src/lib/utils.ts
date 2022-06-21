@@ -1,5 +1,5 @@
 import { send } from "@sapphire/plugin-editable-commands";
-import { ColorResolvable, Message, MessageEmbed, User } from "discord.js";
+import { ColorResolvable, GuildMember, Message, MessageEmbed, PermissionResolvable, User } from "discord.js";
 import { Canvas, Image, resolveImage } from "canvas-constructor/skia";
 import { RandomLoadingMessage } from "./constants";
 import path from "path";
@@ -100,6 +100,14 @@ export function underline(value: string): string {
 
 export function pluralize(count: number, singular: string, plural: string): string {
     return count === 1 ? singular : plural;
+}
+
+export function checkForRoles(user: GuildMember, roles: string[]): boolean {
+    return roles.some((role) => user.roles.cache.has(role));
+}
+
+export function hasPermissions(user: GuildMember, permissions: PermissionResolvable[]): boolean {
+    return permissions.some((permission) => user.permissions.has(permission));
 }
 
 /**
