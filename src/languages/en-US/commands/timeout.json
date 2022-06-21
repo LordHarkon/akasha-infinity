@@ -4,5 +4,8 @@
     "successTimeout": "User has been timed out for {{time}}.",
     "successRemove": "User's timeout has been removed.",
     "noTarget": "You must specify a user.",
+    "noPermissions": "You do not have the required permissions to time out this user.",
+    "alreadyMuted": "This user is already timed out. Please try again {{time}}.",
+    "notMuted": "This user is not timed out.",
     "invalidTime": "Specified time is invalid."
 }
