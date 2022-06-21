@@ -3,6 +3,7 @@ import type { CommandOptions } from "#typings/index";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { Args } from "@sapphire/framework";
 import type { Message } from "discord.js";
+
 // import validator from "validator";
 
 @ApplyOptions<CommandOptions>({
@@ -14,18 +15,29 @@ import type { Message } from "discord.js";
     preconditions: ["OwnerOnly"],
     // preconditions: ["OwnerOnly", "InVoiceChannel"],
     flags: [],
-    options: ["testFlag"],
+    options: [],
     requiredClientPermissions: [],
     requiredUserPermissions: [],
 })
 export class TestCommand extends Command {
     public async messageRun(message: Message, args: Args): Promise<Message | void> {
+        const member = await args.pick("member").catch(() => message.member);
+        console.log(member.permissions.has("ADMINISTRATOR"));
+        // this.container.client.emit("guildCreate", message.guild);
+        // this.container.client.emit("guildDelete", message.guild);
+        // const testPrompter = new MessagePrompter("Can you give me a number?");
+        // const result = await testPrompter.run(message.channel, message.author);
+        // console.log("A1", result);
+        // const testPromptNumber = new MessagePrompter("Choose between 1 and 10.", "number", {
+        //     start: 1,
+        //     end: 10,
+        // });
+        // const resultNumber = await testPromptNumber.run(message.channel, message.author);
+        // console.log("A2", resultNumber);
         // const testArg = await this.handleArgs(
         //     args.pick("integer", { minimum: 0, maximum: 15 }),
         //     "The provided number must be between 0 and 15. Arigatothank you.",
         // );
-        const testArg = await args.getOption("testFlag");
-        console.log(testArg);
         // this.container.client.emit("guildMemberAdd", message.member);
         // return message.channel.send({
         //     content: `<@${message.author.id}>`,

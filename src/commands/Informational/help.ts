@@ -76,13 +76,13 @@ export class HelpCommand extends Command {
             if (options.requiredUserPermissions)
                 embed.addField(
                     await resolveKey(message, "commands/help:requiredUserPermissions"),
-                    `\`${(options.requiredUserPermissions as string[]).join("`, `")}\``,
+                    `\`${(options.requiredUserPermissions as string[]).join("`, `") || "None"}\``,
                     true,
                 );
             if (options.requiredClientPermissions)
                 embed.addField(
                     await resolveKey(message, "commands/help:requiredBotPermissions"),
-                    `\`${(options.requiredClientPermissions as string[]).join("`, `")}\``,
+                    `\`${(options.requiredClientPermissions as string[]).join("`, `") || "None"}\``,
                     true,
                 );
 

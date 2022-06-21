@@ -1,10 +1,10 @@
-import { ListenerOptions, PieceContext, Resolvers } from "@sapphire/framework";
+import type { Events, ListenerOptions, PieceContext } from "@sapphire/framework";
 import { Listener, Store } from "@sapphire/framework";
 import { Permissions } from "discord.js";
 import { PermissionFlagsBits } from "discord-api-types/v10";
 import { capitalize } from "#lib/utils";
 
-export class UserEvent extends Listener {
+export class UserEvent extends Listener<typeof Events.ClientReady> {
     public constructor(context: PieceContext, options?: ListenerOptions) {
         super(context, {
             ...options,
@@ -14,18 +14,6 @@ export class UserEvent extends Listener {
 
     public async run() {
         this.printBanner();
-
-        const time = new Date().toLocaleDateString("ro-RO", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-        });
-
-        // TODO: Remove this in production
-        if (process.env.NODE_ENV === "development")
-            await Resolvers.resolveGuildTextChannel("478556102385074176", this.container.client.guilds?.cache.get("445572484469751808")).value.send(
-                `Gateway ready! - ${time}`,
-            );
     }
 
     private printBanner() {

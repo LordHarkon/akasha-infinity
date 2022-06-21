@@ -80,7 +80,7 @@ export default class User {
      */
     public isPremium(): boolean {
         this.initializedCheck();
-        return new Date(this._userData.premiumExpires) > new Date();
+        return this._userData.isPremium();
     }
 
     public get accessLevel(): number {
@@ -158,10 +158,8 @@ export default class User {
 
         if (this._userData.premiumExpires === null || this._userData.premiumExpires <= new Date()) {
             this._userData.premiumExpires = new Date(Date.now() + time);
-            this._userData.premium = true;
         } else {
             this._userData.premiumExpires = new Date(this._userData.premiumExpires.getTime() + time);
-            this._userData.premium = true;
         }
 
         await this.save();

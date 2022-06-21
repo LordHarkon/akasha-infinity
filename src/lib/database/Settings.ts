@@ -95,7 +95,7 @@ export default class Settings {
         return this._settings.suggestionsChannel;
     }
 
-    public get admininistratorRoles(): string[] {
+    public get administratorRoles(): string[] {
         this.initializedCheck();
         return this._settings.administratorRoles;
     }
