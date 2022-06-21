@@ -31,17 +31,26 @@ export const BOT_PARTIALS: PartialTypes[] = ["MESSAGE", "CHANNEL", "GUILD_MEMBER
 export const CLIENT_OPTIONS: SapphireClientOptions & ClientOptions = {
     intents: BOT_INTENTS,
     partials: BOT_PARTIALS,
+    presence: {
+        status: "online",
+        activities: [
+            {
+                name: "with the universe",
+                type: "PLAYING",
+            },
+        ],
+    },
     defaultPrefix: process.env.PREFIX || "inf.",
     baseUserDirectory: __dirname,
     caseInsensitiveCommands: true,
     caseInsensitivePrefixes: true,
     shards: "auto",
-    statcord: {
-        client_id: process.env.BOT_CLIENT_ID,
-        key: process.env.STATCORD_KEY,
-        autopost: true,
-        sharding: true,
-    },
+    // statcord: {
+    //     client_id: process.env.BOT_CLIENT_ID,
+    //     key: process.env.STATCORD_KEY,
+    //     autopost: true,
+    //     sharding: true,
+    // },
     i18n: {
         fetchLanguage: async (context: InternationalizationContext) => {
             if (!context.guild) return "en-US";
