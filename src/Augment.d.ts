@@ -2,7 +2,7 @@ import type { CustomCooldownContext } from "../preconditions/CustomCooldown";
 
 declare module "@sapphire/framework" {
     interface Preconditions {
-        AdminOnly: never;
+        AdministratorOnly: never;
         CustomCooldown: CustomCooldownContext;
         GuildOnly: never;
         InVoiceChannel: never;

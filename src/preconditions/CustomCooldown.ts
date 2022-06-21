@@ -13,7 +13,7 @@ export interface CustomCooldownContext extends PreconditionContext {
 }
 
 export class CustomCooldown extends Precondition {
-    public buckets = new WeakMap<Command, RateLimitManager<string>>();
+    public buckets = new WeakMap<Command, RateLimitManager>();
 
     public async run(message: Message, command: Command, context: CustomCooldownContext) {
         if (context.external) return this.ok();
@@ -22,7 +22,8 @@ export class CustomCooldown extends Precondition {
 
         if (context.filteredUsers?.includes(message.author.id)) return this.ok();
 
-        const { premium } = await UserModel.findOne({ id: message.author.id });
+        const user = await UserModel.findOne({ id: message.author.id });
+        const premium = user.premium();
 
         const ratelimit = this.getManager(command, context, premium).acquire(this.getId(message, context));
 
