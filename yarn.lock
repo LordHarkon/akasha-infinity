@@ -220,6 +220,13 @@
     colorette "^2.0.16"
     tslib "^2.3.1"
 
+"@sapphire/plugin-pattern-commands@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@sapphire/plugin-pattern-commands/-/plugin-pattern-commands-3.0.0.tgz#a587dfb8d1deded4ad03ff982b84df3f65f2b7e5"
+  integrity sha512-OzuKdIVNKDX8LRnt8yb42oOBTU1oo6bhwgsmuN/TvOWnPHc6P1Vmwhq5Y7X9VlSySo6Wypo0EVKhtU+xCfnINw==
+  dependencies:
+    tslib "^2.4.0"
+
 "@sapphire/plugin-subcommands@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@sapphire/plugin-subcommands/-/plugin-subcommands-2.2.0.tgz#2973fa8f93c44e34968ad97f60cdd81b4cd57ae9"
@@ -245,6 +252,13 @@
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@sapphire/shapeshift/-/shapeshift-3.2.0.tgz#f26298ed472e73ee89e0a164c9f98305676bf101"
   integrity sha512-asNgE5Ooil2/oGIAj6vZMoUc2ZFED0TGYD7jwvZsjHPQZBEh9ITj94ca4bCgiCR1s2ER/UjzykH+5wE3ebVZnQ==
+
+"@sapphire/stopwatch@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@sapphire/stopwatch/-/stopwatch-1.4.1.tgz#3be0d047b0313864dfb169ff6868f5cc3f203ff0"
+  integrity sha512-FoZIM7oQ1kwkjWpl/rKReuDFSlkCDjDp//1Np2mmQD+xQ2Zyo/J2MaYAITprwQr3AUBu/OOUJvqm7f8lA9R7gA==
+  dependencies:
+    tslib "^2.3.1"
 
 "@sapphire/time-utilities@^1.7.3", "@sapphire/time-utilities@^1.7.4":
   version "1.7.4"
