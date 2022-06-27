@@ -16,6 +16,7 @@ const client = new Client(CLIENT_OPTIONS);
  * TODO: Make commands toggleable by making a preconditions that check if they are in an array for that server. Useful for disabling commands inside the dashboard.
  * TODO: Make the first page of the help command where it shows maybe some announcements/changelog and how to use the help command/bot.
  * TODO: Make command be able to be disabled in the dashboard. Use a precondition to check if the command is disabled in that guild. Show in the help command with 🟢 and 🔴.
+ * TODO: Add a command for giving roles based on reactions.
  */
 
 (async () => {
