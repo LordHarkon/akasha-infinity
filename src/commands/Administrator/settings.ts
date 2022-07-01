@@ -143,6 +143,7 @@ export class SettingsCommand extends SubCommand {
     //     });
     // }
 
+
     public async add(message: Message, args: Args) {
         // const testArg = await this.awaitMessage(message);
         // message.channel.send(testArg.first().content);

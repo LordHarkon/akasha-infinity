@@ -1,4 +1,5 @@
 import { Command } from "#lib/structures/Command";
+import { formatNumber } from "#lib/utils";
 import type { CommandOptions } from "#typings/index";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { Args } from "@sapphire/framework";
@@ -21,8 +22,15 @@ import type { Message } from "discord.js";
 })
 export class TestCommand extends Command {
     public async messageRun(message: Message, args: Args): Promise<Message | void> {
-        const member = await args.pick("member").catch(() => message.member);
-        console.log(member.permissions.has("ADMINISTRATOR"));
+        function upperBound(level) {
+            return Math.ceil((level / 0.24) ** 2);
+        }
+
+        const testValue = new Array(63).fill().reduce((p, c, i) => p + upperBound(i), 0);
+
+        message.channel.send(formatNumber(testValue));
+        // const member = await args.pick("member").catch(() => message.member);
+        // console.log(member.permissions.has("ADMINISTRATOR"));
         // this.container.client.emit("guildCreate", message.guild);
         // this.container.client.emit("guildDelete", message.guild);
         // const testPrompter = new MessagePrompter("Can you give me a number?");

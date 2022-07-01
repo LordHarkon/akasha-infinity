@@ -47,7 +47,8 @@ export default class Settings {
 
     public get prefix(): string {
         this.initializedCheck();
-        return this._settings.prefix;
+        return "inf.";
+        // return this._settings.prefix;
     }
 
     public get language(): string {

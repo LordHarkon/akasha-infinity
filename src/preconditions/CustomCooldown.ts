@@ -23,7 +23,7 @@ export class CustomCooldown extends Precondition {
         if (context.filteredUsers?.includes(message.author.id)) return this.ok();
 
         const user = await UserModel.findOne({ id: message.author.id });
-        const premium = user.premium();
+        const premium = user.isPremium();
 
         const ratelimit = this.getManager(command, context, premium).acquire(this.getId(message, context));
 
